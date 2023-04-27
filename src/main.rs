@@ -7,9 +7,9 @@ use actix_web::{App, HttpRequest, HttpResponse, HttpServer, Result, web};
 use actix_web::http::StatusCode;
 use tokio::select;
 use warp::reply::with_status;
-
+use controller::home_page::get_all_posts;
 use model::database::selecting;
-use warp::{Rejection, Reply};
+use warp::{get, Rejection, Reply};
 
 async fn index(req: HttpRequest)-> Result<NamedFile>{
      let path= Path::new("templates/index.hbs");
@@ -20,6 +20,8 @@ async fn index(req: HttpRequest)-> Result<NamedFile>{
 #[tokio::main]
 async fn main() -> Result<()>{
 
+//
+     get_all_posts().await;
 
      //database
 selecting().await.expect("TODO: panic message");
