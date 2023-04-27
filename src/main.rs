@@ -12,7 +12,7 @@ use model::database::selecting;
 use warp::{Rejection, Reply};
 
 async fn index(req: HttpRequest)-> Result<NamedFile>{
-     let path= Path::new("src/one.html");
+     let path= Path::new("templates/index.hbs");
      Ok(NamedFile::open(path)?)
 }
 
@@ -29,6 +29,7 @@ selecting().await.expect("TODO: panic message");
           App::new()
               .service(web::resource("/").to(index))
               .service(web::resource("/hi").to(index))
+              .service(web::resource("/hello").to(index))
      })
          .bind("127.0.0.1:8080")?
          .run().await.expect("TODO: panic message");
