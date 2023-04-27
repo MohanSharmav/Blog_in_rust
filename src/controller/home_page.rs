@@ -12,8 +12,13 @@ let mut handlebars= handlebars::Handlebars::new();
         .register_template_string("index", &index_template)
         .unwrap();
 
+let vec=vec![1,2,2,2];
+
     let mut data =HashMap::new();
-    data.insert("name","boss");
+    // data.insert("name","boss");
+    // data.insert("1","jos");
+    data.insert("2",vec);
+    println!("{:?}",data);
     let html = handlebars.render("index", &data).unwrap();
 
     //test  start

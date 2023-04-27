@@ -16,20 +16,23 @@ pub(crate) async fn selecting() -> Result<(),Error>{
 
     select_all_from_table().await.expect("cant select");
 
-    println!("⭐⭐⭐⭐⭐⭐");
+    let mut vect=Vec::new();
     let  rows = sqlx::query("SELECT name FROM categories")
         .fetch_all(&pool)
         .await?;
 
     for row in rows{
         let name: String=row.get("name");
+        vect.push(name.clone());
         println!("name is ⭐: {}",name)
     }
+   println!(" ⭐⭐⭐⭐⭐⭐        ok {:?}",vect);
     Ok(())
 }
 
 
 async fn select_all_from_table() -> Result<(),Error> {
+
 
 
     dotenv::dotenv().expect("Unable to load environment variables from .env file");
