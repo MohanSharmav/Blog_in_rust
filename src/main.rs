@@ -31,7 +31,7 @@ selecting().await.expect("TODO: panic message");
           App::new()
               .service(web::resource("/").to(index))
               .service(web::resource("/hi").to(index))
-              .service(web::resource("/hello").to(index))
+              .service(web::resource("/hello").to(get_all_posts))
      })
          .bind("127.0.0.1:8080")?
          .run().await.expect("TODO: panic message");
