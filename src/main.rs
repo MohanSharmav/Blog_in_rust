@@ -20,13 +20,13 @@ async fn index(req: HttpRequest)-> Result<NamedFile>{
 #[tokio::main]
 async fn main() -> Result<()>{
 
-//
+//test start
      get_all_posts().await;
 
-     //database
-selecting().await.expect("TODO: panic message");
 
+selecting();
 
+// test end
      HttpServer::new(|| {
           App::new()
               .service(web::resource("/").to(index))

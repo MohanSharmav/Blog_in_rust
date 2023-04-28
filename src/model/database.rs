@@ -2,7 +2,7 @@
 use sqlx::{Error, Pool, Postgres, Row};
 use sqlx::postgres::{PgPoolOptions, PgRow};
 
-pub(crate) async fn selecting() -> Result<(),Error>{
+pub(crate) async fn selecting() ->Result<Vec<String> ,()>{
 
 
 
@@ -20,7 +20,7 @@ pub(crate) async fn selecting() -> Result<(),Error>{
     let mut vect=Vec::new();
     let  rows = sqlx::query("SELECT name FROM categories")
         .fetch_all(&pool)
-        .await?;
+        .await.expect("Unable to");
 
     for row in rows{
         let name: String=row.get("name");
@@ -29,7 +29,7 @@ pub(crate) async fn selecting() -> Result<(),Error>{
     }
 
    println!(" ⭐⭐⭐⭐⭐⭐        ok {:?}",vect);
-    Ok(())
+Ok(vect)
 }
 
 
