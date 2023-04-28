@@ -28,6 +28,7 @@ pub(crate) async fn selecting() ->Result<Vec<String> ,()>{
         println!("name is ⭐: {}",name)
     }
 
+
    println!(" ⭐⭐⭐⭐⭐⭐        ok {:?}",vect);
 Ok(vect)
 }

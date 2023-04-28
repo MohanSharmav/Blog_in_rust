@@ -1,6 +1,10 @@
 use std::collections::HashMap;
+use std::fmt::Display;
 use std::fs;
+use std::future::Future;
 use actix_web::HttpResponse;
+use crate::model::database::selecting;
+use futures::future;
 
 pub async fn get_all_posts()-> HttpResponse
 {
@@ -12,8 +16,11 @@ let mut handlebars= handlebars::Handlebars::new();
         .register_template_string("index", &index_template)
         .unwrap();
 
-let vec=vec![1,2,2,2];
 
+    let mut vector=Vec::new();
+
+    vector.push(selecting.to_owned());
+    println!("{}", vector);
     let mut data =HashMap::new();
     // data.insert("name","boss");
     // data.insert("1","jos");

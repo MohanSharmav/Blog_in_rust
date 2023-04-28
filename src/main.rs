@@ -1,5 +1,10 @@
 mod model;
 mod controller;
+
+use std::env::Args;
+use std::fmt::{Debug, Formatter};
+use std::future::Future;
+use std::io::Read;
 use std::path::Path;
 use sqlx::postgres::PgPoolOptions;
 use actix_files::NamedFile;
@@ -16,7 +21,6 @@ async fn index(req: HttpRequest)-> Result<NamedFile>{
      Ok(NamedFile::open(path)?)
 }
 
-
 #[tokio::main]
 async fn main() -> Result<()>{
 
@@ -25,7 +29,22 @@ async fn main() -> Result<()>{
 
 
 selecting();
+//
+//      let mut vector=Vec::new();
+// vector= selecting();
+//      print_type_of(vector);
+    //  vector=selecting();
+    // 
+    // 
+    // println!({})
 
+//       let mut x =selecting();
+//      x.read_to_string().expect("TODO: panic message");
+// //      let string1: String = x.await.iter().collect::<String>();
+// println!("come onn{}",string1);
+     // println!("{:?}",x);
+     // vector.push(selecting);
+     // println!("{}", vector);
 // test end
      HttpServer::new(|| {
           App::new()
